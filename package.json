@@ -6,7 +6,7 @@
   "style": "lib/slidedown.css",
   "types": "lib/slidedown.d.ts",
   "scripts": {
-    "clean": "rimraf 'lib/**/*.{js,js.map,d.ts}'",
+    "clean": "rm -rf 'lib/**/*.{js,js.map,d.ts}'",
     "test": "npm run build && vitest run",
     "test:watch": "concurrently \"npm run build:watch\" \"vitest\" --kill-others",
     "build": "tsc",
@@ -36,8 +36,7 @@
     "lib/**/*.js",
     "lib/**/*.js.map",
     "lib/**/*.css",
-    "lib/**/*.d.ts",
-    "lib/**/*.tsx"
+    "lib/**/*.d.ts"
   ],
   "repository": "frankwallis/react-slidedown",
   "keywords": [
