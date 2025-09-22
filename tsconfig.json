@@ -1,21 +1,30 @@
 {
-	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
-		"lib": [
-			"dom",
-			"es5",
-			"es2015.promise"
-		],
-		"esModuleInterop": true,
-		"importHelpers": true,
-		"removeComments": true,
-		"moduleResolution": "node",
-		"sourceMap": true,
-		"declaration": true,
-		"jsx": "react",
-		"noImplicitReturns": true,
-		"noImplicitThis": false,
-		"noFallthroughCasesInSwitch": true
-	}
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "declaration": true,
+    "jsx": "react-jsx",
+    "noImplicitReturns": true,
+    "noImplicitThis": false,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "**/*"
+  ],
+    "exclude": [
+    "test",
+    "node_modules"
+  ]
 }

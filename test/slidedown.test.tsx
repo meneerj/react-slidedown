@@ -1,5 +1,6 @@
 import React from 'react'
 import { createRoot, Root } from 'react-dom/client'
+import { act } from 'react'
 import { describe, it, expect, beforeEach } from 'vitest'
 import { SlideDown } from '../lib/slidedown'
 
@@ -31,10 +32,12 @@ describe('SlideDown', () => {
     function render(element: React.ReactElement) {
         if (!attachTo) attachTo = setupContainer()
         root = createRoot(attachTo!)
-        root.render(element)
+        act(() => {
+            root!.render(element)
+        })
         return {
             container: attachTo!,
-            rerender: (el: React.ReactElement) => root!.render(el),
+            rerender: (el: React.ReactElement) => act(() => root!.render(el)),
             unmount: () => root!.unmount(),
         }
     }
@@ -104,15 +107,15 @@ describe('SlideDown', () => {
             expect(el.clientHeight).toBe(18)
         })
 
-        // it('transitions when children are removed', async () => {
-        //     const { container, rerender } = render(<SlideDown className="test-slidedown" transitionOnAppear={false}><div className="test-content" /></SlideDown>)
-        //     const el = container.querySelector('.react-slidedown') as HTMLElement
-        //     expect(el.clientHeight).toBe(18)
-        //     rerender(<SlideDown className="test-slidedown" transitionOnAppear={false}>{null}</SlideDown>)
-        //     expect(el.clientHeight).toBe(18)
-        //     await pause(110)
-        //     // expect(el.clientHeight).toBe(0)
-        // })
+        it('transitions when children are removed', async () => {
+            const { container, rerender } = render(<SlideDown className="test-slidedown" transitionOnAppear={false}><div className="test-content" /></SlideDown>)
+            const el = container.querySelector('.react-slidedown') as HTMLElement
+            expect(el.clientHeight).toBe(18)
+            rerender(<SlideDown className="test-slidedown" transitionOnAppear={false}>{null}</SlideDown>)
+            expect(el.clientHeight).toBe(18)
+            await pause(150)
+            expect(el.clientHeight).toBe(0)
+        })
 
         it('reverses transition when item is removed half-way through', async () => {
             const { container, rerender } = render(<SlideDown className="test-slidedown"><div className="test-content" /></SlideDown>)

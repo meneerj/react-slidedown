@@ -1,9 +1,7 @@
+.idea
 *.log
 node_modules/
 coverage/
-example/*.js
-example/*.d.ts
-example/*.js.map
 lib/**/*.js
 lib/**/*.d.ts
 lib/**/*.js.map
