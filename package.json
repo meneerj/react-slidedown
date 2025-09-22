@@ -1,6 +1,6 @@
 {
   "name": "react-slidedown",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "Component for animating height during mount/unmount using a CSS transition",
   "main": "lib/slidedown.js",
   "style": "lib/slidedown.css",
@@ -10,7 +10,8 @@
     "test": "npm run build && vitest run",
     "test:watch": "concurrently \"npm run build:watch\" \"vitest\" --kill-others",
     "build": "tsc",
-    "build:watch": "tsc -w"
+    "build:watch": "tsc -w",
+    "prepare": "npm run build"
   },
   "author": "Frank Wallis",
   "license": "MIT",
